@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bot Dashboard - BotHost</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .dashboard {
+            background: #202225;
+            color: white;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .bots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .bot-card {
+            background: #36393f;
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid #40444b;
+        }
+        
+        .bot-status {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+        }
+        
+        .status-running {
+            background: #43b581;
+        }
+        
+        .status-stopped {
+            background: #f04747;
+        }
+        
+        .bot-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .action-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .stop-btn {
+            background: #f04747;
+            color: white;
+        }
+        
+        .restart-btn {
+            background: #7289da;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="dashboard-header">
+            <h1><i class="fas fa-tachometer-alt"></i> Bot Dashboard</h1>
+            <p>Monitor and manage your deployed Discord bots</p>
+        </div>
+        
+        <div id="botsGrid" class="bots-grid">
+            <!-- Bots will be loaded here -->
+        </div>
+    </div>
+
+    <script>
+        async function loadBots() {
+            try {
+                const response = await fetch('/api/bots');
+                const data = await response.json();
+                
+                const botsGrid = document.getElementById('botsGrid');
+                
+                if (data.bots.length === 0) {
+                    botsGrid.innerHTML = `
+                        <div style="text-align: center; grid-column: 1 / -1;">
+                            <h3>No bots deployed yet!</h3>
+                            <p>Deploy your first bot to see it here.</p>
+                            <a href="index.html" style="color: #7289da;">Go to Deploy</a>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                botsGrid.innerHTML = data.bots.map(bot => `
+                    <div class="bot-card">
+                        <h3><i class="fab fa-discord"></i> ${bot.name}</h3>
+                        <div class="bot-status">
+                            <div class="status-dot status-${bot.status}"></div>
+                            <span>${bot.status === 'running' ? 'Running' : 'Stopped'}</span>
+                        </div>
+                        <p><strong>Uptime:</strong> ${Math.floor(bot.uptime / 60)} minutes</p>
+                        <div class="bot-actions">
+                            <button class="action-btn stop-btn" onclick="stopBot('${bot.name}')">
+                                <i class="fas fa-stop"></i> Stop
+                            </button>
+                            <button class="action-btn restart-btn" onclick="restartBot('${bot.name}')">
+                                <i class="fas fa-redo"></i> Restart
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+                
+            } catch (error) {
+                console.error('Failed to load bots:', error);
+            }
+        }
+        
+        async function stopBot(botName) {
+            try {
+                const response = await fetch(`/api/stop-bot/${botName}`, {
+                    method: 'POST'
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    alert(`Bot "${botName}" stopped successfully!`);
+                    loadBots(); // Reload bots
+                } else {
+                    alert(result.message);
+                }
+            } catch (error) {
+                alert('Failed to stop bot: ' + error.message);
+            }
+        }
+        
+        function restartBot(botName) {
+            alert('Restart functionality coming soon!');
+        }
+        
+        // Load bots on page load
+        loadBots();
+        
+        // Refresh every 30 seconds
+        setInterval(loadBots, 30000);
+    </script>
+</body>
+</html>
