@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BotHost - 24/7 Discord Bot Deployment</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fab fa-discord"></i>
+                <span>BotHost</span>
+            </div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#deploy">Deploy</a>
+                <a href="#pricing">Pricing</a>
+                <button class="login-btn">Login</button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Deploy Discord Bots <span class="highlight">24/7</span></h1>
+            <p>Sabse easy way hai apne Discord bots ko deploy karne ka! Upload your code and make it live in seconds.</p>
+            <button class="cta-btn" onclick="showDeployModal()">
+                <i class="fas fa-rocket"></i>
+                Deploy Your Bot Now
+            </button>
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Active Bots</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">99.9%</span>
+                    <span class="stat-label">Uptime</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">Support</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2>Why Choose BotHost?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>24/7 Uptime</h3>
+                    <p>Your bot never sleeps! Always online for your Discord server.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-upload"></i>
+                    <h3>Easy Upload</h3>
+                    <p>Just drag & drop your bot files. Python, Node.js - sab supported!</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Secure Hosting</h3>
+                    <p>Your bot tokens and data are completely secure with us.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Real-time Monitoring</h3>
+                    <p>Live stats, error logs, and performance monitoring.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-code"></i>
+                    <h3>Multi-Language</h3>
+                    <p>Python, JavaScript, Java - choose your favorite language!</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-headset"></i>
+                    <h3>24/7 Support</h3>
+                    <p>Stuck somewhere? Our team is always ready to help!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="deploy" class="deploy-section">
+        <div class="container">
+            <h2>Deploy in 3 Simple Steps</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Upload Your Bot</h3>
+                    <p>Drag and drop your bot files or connect with GitHub</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Add Bot Token</h3>
+                    <p>Safely add your Discord bot token in our secure environment</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Go Live!</h3>
+                    <p>Hit deploy and your bot is live 24/7!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2>Simple Pricing</h2>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>Free</h3>
+                    <div class="price">₹0<span>/month</span></div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> 1 Bot</li>
+                        <li><i class="fas fa-check"></i> Basic Support</li>
+                        <li><i class="fas fa-check"></i> 99% Uptime</li>
+                        <li><i class="fas fa-times"></i> Custom Domain</li>
+                    </ul>
+                    <button class="pricing-btn">Get Started</button>
+                </div>
+                <div class="pricing-card popular">
+                    <div class="popular-badge">Most Popular</div>
+                    <h3>Pro</h3>
+                    <div class="price">₹299<span>/month</span></div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> 5 Bots</li>
+                        <li><i class="fas fa-check"></i> Priority Support</li>
+                        <li><i class="fas fa-check"></i> 99.9% Uptime</li>
+                        <li><i class="fas fa-check"></i> Custom Domain</li>
+                        <li><i class="fas fa-check"></i> Advanced Analytics</li>
+                    </ul>
+                    <button class="pricing-btn">Choose Pro</button>
+                </div>
+                <div class="pricing-card">
+                    <h3>Enterprise</h3>
+                    <div class="price">₹999<span>/month</span></div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Unlimited Bots</li>
+                        <li><i class="fas fa-check"></i> 24/7 Support</li>
+                        <li><i class="fas fa-check"></i> 99.99% Uptime</li>
+                        <li><i class="fas fa-check"></i> Custom Domain</li>
+                        <li><i class="fas fa-check"></i> Dedicated Server</li>
+                    </ul>
+                    <button class="pricing-btn">Contact Us</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deploy Modal -->
+    <div id="deployModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="hideDeployModal()">&times;</span>
+            <h2>Deploy Your Discord Bot</h2>
+            <div class="deploy-form">
+                <div class="upload-area" id="uploadArea">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Upload Your Bot Files</h3>
+                    <p>Drag & drop your files here or click to browse</p>
+                    <input type="file" id="fileInput" multiple accept=".py,.js,.json,.txt">
+                </div>
+                <div class="form-group">
+                    <label for="botName">Bot Name</label>
+                    <input type="text" id="botName" placeholder="Enter bot name">
+                </div>
+                <div class="form-group">
+                    <label for="botToken">Bot Token</label>
+                    <input type="password" id="botToken" placeholder="Enter your Discord bot token">
+                </div>
+                <div class="form-group">
+                    <label for="language">Language</label>
+                    <select id="language">
+                        <option value="python">Python</option>
+                        <option value="javascript">Node.js</option>
+                        <option value="java">Java</option>
+                    </select>
+                </div>
+                <button class="deploy-btn-modal" onclick="deployBot()">
+                    <i class="fas fa-rocket"></i>
+                    Deploy Bot
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fab fa-discord"></i> BotHost</h3>
+                    <p>The easiest way to deploy Discord bots 24/7!</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="#features">Features</a>
+                    <a href="#deploy">Deploy</a>
+                    <a href="#pricing">Pricing</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <a href="#">Documentation</a>
+                    <a href="#">Contact Us</a>
+                    <a href="#">Discord Server</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 BotHost. Made with ❤️ for Discord bot developers!</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
